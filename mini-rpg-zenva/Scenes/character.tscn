@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b5wwyf26tay15"]
+
+[ext_resource type="Script" uid="uid://b1vcedip7t4d3" path="res://Scripts/character.gd" id="1_ushfy"]
+[ext_resource type="Texture2D" uid="uid://cwrthd5xap2j1" path="res://Sprites/Dragon.png" id="2_owm7s"]
+[ext_resource type="Script" uid="uid://d08nh1fmoi1gv" path="res://Scripts/character_visual.gd" id="3_nytcm"]
+[ext_resource type="Script" uid="uid://dmfvpkgkin5li" path="res://Scripts/character_health_bar.gd" id="3_owm7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ushfy"]
+bg_color = Color(0.29875368, 0.29875368, 0.29875368, 0.74509805)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owm7s"]
+bg_color = Color(0, 1.4391803, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ushfy"]
+font_size = 18
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.11764706)
+shadow_offset = Vector2(2, 1)
+
+[node name="Character" type="Node2D" unique_id=169903751]
+script = ExtResource("1_ushfy")
+current_health = 50
+max_health = 50
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=133059099]
+texture = ExtResource("2_owm7s")
+offset = Vector2(0, -70)
+script = ExtResource("3_nytcm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1183260782]
+volume_db = -15.0
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1252606764]
+offset_left = -105.0
+offset_top = 20.0
+offset_right = 107.0
+offset_bottom = 47.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ushfy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_owm7s")
+show_percentage = false
+script = ExtResource("3_owm7s")
+
+[node name="HealthText" type="Label" parent="HealthBar" unique_id=1728894404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Health"
+label_settings = SubResource("LabelSettings_ushfy")
+horizontal_alignment = 1
+vertical_alignment = 1

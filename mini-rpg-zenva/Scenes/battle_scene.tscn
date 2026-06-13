@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://cb1mrsijdgbdn"]
+
+[ext_resource type="Texture2D" uid="uid://rvbr83fwpcfx" path="res://Sprites/backgroundCastles.png" id="1_b25br"]
+[ext_resource type="Script" uid="uid://bruselqxnl6kj" path="res://Scripts/game_manager.gd" id="1_hdvqd"]
+[ext_resource type="PackedScene" uid="uid://b5wwyf26tay15" path="res://Scenes/character.tscn" id="3_anwxn"]
+[ext_resource type="Script" uid="uid://d4mg7uayh2gs7" path="res://Scripts/moving_background.gd" id="3_xdap8"]
+[ext_resource type="Script" uid="uid://de6161c0y0h0c" path="res://Scripts/combat_action.gd" id="4_20f6w"]
+[ext_resource type="Resource" uid="uid://wladh6jjyvf7" path="res://Combat Actions/slash.tres" id="5_w4764"]
+[ext_resource type="Resource" uid="uid://bbag202ij6nmp" path="res://Combat Actions/heavy_hit.tres" id="6_ed262"]
+[ext_resource type="Resource" uid="uid://cx1vefe13qrav" path="res://Combat Actions/heal.tres" id="7_ms847"]
+[ext_resource type="Script" uid="uid://nmb3glx52dpo" path="res://Scripts/combat_actions_ui.gd" id="8_ed262"]
+[ext_resource type="Script" uid="uid://cb0luwyrdv4a" path="res://Scripts/combat_action_button.gd" id="8_w4764"]
+[ext_resource type="Texture2D" uid="uid://faymomhiqt3p" path="res://Sprites/Reptile.png" id="8_wb0gu"]
+[ext_resource type="Texture2D" uid="uid://d1qgoa3qksao0" path="res://Sprites/Snake.png" id="9_84vmf"]
+[ext_resource type="Script" uid="uid://bgjk7y0bolcag" path="res://Scripts/end_screen.gd" id="10_ms847"]
+[ext_resource type="AudioStream" uid="uid://d1fgw3cdgrkm7" path="res://Audio/battle_music.wav" id="13_84vmf"]
+
+[sub_resource type="Gradient" id="Gradient_xdap8"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9997446, 0.19502383, 0.14470291, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4ggb"]
+bg_color = Color(0.27282545, 0.6021083, 0.74980074, 0.92156863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wb0gu"]
+font_size = 58
+font_color = Color(0.89411765, 0.7058824, 0.11764706, 1)
+outline_size = 5
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+shadow_size = 5
+shadow_offset = Vector2(3, 2)
+
+[node name="Main" type="Node2D" unique_id=125324795 node_paths=PackedStringArray("player_character", "ai_character")]
+script = ExtResource("1_hdvqd")
+player_character = NodePath("Player")
+ai_character = NodePath("NPC")
+
+[node name="Background" type="TextureRect" parent="." unique_id=244922837]
+z_index = -4096
+offset_left = -1580.0
+offset_top = -528.0
+offset_right = 5315.0
+offset_bottom = 496.0
+texture = ExtResource("1_b25br")
+stretch_mode = 1
+script = ExtResource("3_xdap8")
+color_lerp = SubResource("Gradient_xdap8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1255503549]
+
+[node name="Player" parent="." unique_id=169903751 instance=ExtResource("3_anwxn")]
+position = Vector2(-230, 0)
+is_player = true
+combat_actions = Array[ExtResource("4_20f6w")]([ExtResource("5_w4764"), ExtResource("6_ed262"), ExtResource("7_ms847")])
+display_texture = ExtResource("8_wb0gu")
+
+[node name="NPC" parent="." unique_id=1347167894 instance=ExtResource("3_anwxn")]
+position = Vector2(230, 0)
+combat_actions = Array[ExtResource("4_20f6w")]([ExtResource("5_w4764"), ExtResource("6_ed262"), ExtResource("7_ms847")])
+facing_left = true
+display_texture = ExtResource("9_84vmf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=415776958]
+
+[node name="CombatActionsUI" type="Panel" parent="CanvasLayer" unique_id=949832225]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -173.0
+offset_right = 225.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("8_ed262")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/CombatActionsUI" unique_id=1375216420]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 162.0
+offset_bottom = 153.0
+alignment = 1
+
+[node name="CombatActionButton" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=161358723]
+layout_mode = 2
+text = "Action"
+script = ExtResource("8_w4764")
+
+[node name="CombatActionButton2" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=389531321]
+layout_mode = 2
+text = "Action"
+script = ExtResource("8_w4764")
+
+[node name="CombatActionButton3" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=882538982]
+layout_mode = 2
+text = "Action"
+script = ExtResource("8_w4764")
+
+[node name="PassTurnButton" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=339462732]
+layout_mode = 2
+text = "Pass Turn"
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/CombatActionsUI" unique_id=377939031]
+layout_mode = 1
+offset_left = 175.0
+offset_top = 11.0
+offset_right = 435.0
+offset_bottom = 146.0
+bbcode_enabled = true
+
+[node name="EndScreen" type="Panel" parent="CanvasLayer" unique_id=330948041]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f4ggb")
+script = ExtResource("10_ms847")
+
+[node name="HeaderText" type="Label" parent="CanvasLayer/EndScreen" unique_id=717031778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -156.5
+offset_right = 397.5
+offset_bottom = -77.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HeaderText"
+label_settings = SubResource("LabelSettings_wb0gu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/EndScreen" unique_id=112903677]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -33.0
+offset_right = 93.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1600761449]
+stream = ExtResource("13_84vmf")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/CombatActionsUI/ButtonContainer/PassTurnButton" to="CanvasLayer/CombatActionsUI" method="_on_pass_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndScreen/PlayAgainButton" to="CanvasLayer/EndScreen" method="_on_play_again_button_pressed"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CombatAction" format=3 uid="uid://cx1vefe13qrav"]
+
+[ext_resource type="Script" uid="uid://de6161c0y0h0c" path="res://Scripts/combat_action.gd" id="1_f3m6k"]
+
+[resource]
+script = ExtResource("1_f3m6k")
+display_name = "Heal"
+description = "Cast a healing spell that restores 10 health points."
+heal_amount = 10
+metadata/_custom_type_script = "uid://de6161c0y0h0c"
