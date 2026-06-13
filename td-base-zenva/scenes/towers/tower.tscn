@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cm0dh121hixsp"]
+
+[ext_resource type="Script" uid="uid://bkyoolnjian3" path="res://scenes/towers/tower.gd" id="1_by3tn"]
+
+[node name="Tower" type="Node2D" unique_id=1719721052]
+script = ExtResource("1_by3tn")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=256547552]
+
+[node name="Turret" type="Sprite2D" parent="." unique_id=407846976]
+
+[node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=845590195]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1813151744]
+
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
+[connection signal="area_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_exited"]

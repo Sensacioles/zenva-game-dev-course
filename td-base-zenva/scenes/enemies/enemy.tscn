@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dvwk6dy8rm2ex"]
+
+[ext_resource type="Texture2D" uid="uid://cynpdq1428qka" path="res://graphics/Ships/ship_0009.png" id="1_6xk8f"]
+[ext_resource type="Script" uid="uid://2s1m8s35thk0" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
+[ext_resource type="Shader" uid="uid://cfkkbgs0m6ya4" path="res://scenes/enemies/enemy.tres" id="2_38ino"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcftc"]
+resource_local_to_scene = true
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8e3ao"]
+radius = 17.0
+
+[node name="Enemy" type="Area2D" unique_id=437020685]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_8e3ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1809992899]
+material = SubResource("ShaderMaterial_fcftc")
+rotation = 1.5707964
+scale = Vector2(1.5, 1.499)
+texture = ExtResource("1_6xk8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254056730]
+shape = SubResource("CircleShape2D_8e3ao")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
