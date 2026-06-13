@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bwwbbe5niw3kg"]
+
+[ext_resource type="Texture2D" uid="uid://chmguchfw7u7o" path="res://Physics/PhysicsCharacter.png" id="1_bbkc8"]
+[ext_resource type="Script" uid="uid://bugphdoysa4vs" path="res://Physics/physics_player.gd" id="1_kow1d"]
+[ext_resource type="PackedScene" uid="uid://wbqlwsssei1r" path="res://Physics/crate.tscn" id="3_h1ex6"]
+[ext_resource type="PackedScene" uid="uid://i2gvlp0th1vm" path="res://Physics/mega_crate.tscn" id="4_p3c4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kow1d"]
+size = Vector2(18, 18)
+
+[node name="Main" type="Node2D" unique_id=1204863123]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=887704668]
+zoom = Vector2(3, 3)
+
+[node name="Player" type="RigidBody2D" parent="." unique_id=453546806]
+mass = 5.0
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("1_kow1d")
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=1066985382]
+texture = ExtResource("1_bbkc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2028876745]
+shape = SubResource("RectangleShape2D_kow1d")
+
+[node name="Crate" parent="." unique_id=1220308858 instance=ExtResource("3_h1ex6")]
+
+[node name="Crate2" parent="." unique_id=1772843042 instance=ExtResource("3_h1ex6")]
+position = Vector2(-68, 32)
+
+[node name="Crate3" parent="." unique_id=1706536275 instance=ExtResource("3_h1ex6")]
+position = Vector2(-112, 34)
+
+[node name="Crate4" parent="." unique_id=346118855 instance=ExtResource("3_h1ex6")]
+position = Vector2(-72, -60)
+
+[node name="Crate5" parent="." unique_id=350642128 instance=ExtResource("3_h1ex6")]
+position = Vector2(-53, 89)
+
+[node name="Crate6" parent="." unique_id=411200876 instance=ExtResource("3_h1ex6")]
+position = Vector2(107, 55)
+
+[node name="Crate7" parent="." unique_id=294762250 instance=ExtResource("3_h1ex6")]
+position = Vector2(51, -25)
+
+[node name="Crate8" parent="." unique_id=930797829 instance=ExtResource("3_h1ex6")]
+position = Vector2(77, 80)
+
+[node name="Crate9" parent="." unique_id=1529957660 instance=ExtResource("3_h1ex6")]
+position = Vector2(-90, -17)
+
+[node name="Crate10" parent="." unique_id=1085839055 instance=ExtResource("3_h1ex6")]
+position = Vector2(-149, 4)
+
+[node name="Crate11" parent="." unique_id=1819995660 instance=ExtResource("3_h1ex6")]
+position = Vector2(32, -65)
+
+[node name="Crate12" parent="." unique_id=79342368 instance=ExtResource("3_h1ex6")]
+position = Vector2(23, 38)
+
+[node name="Crate13" parent="." unique_id=319382168 instance=ExtResource("3_h1ex6")]
+position = Vector2(107, -56)
+
+[node name="Crate14" parent="." unique_id=1032093545 instance=ExtResource("3_h1ex6")]
+position = Vector2(-17, -57)
+
+[node name="MegaCrate" parent="." unique_id=349248651 instance=ExtResource("4_p3c4k")]
+position = Vector2(-115, 78)
+
+[node name="MegaCrate2" parent="." unique_id=1326422062 instance=ExtResource("4_p3c4k")]
+position = Vector2(76, -80)
+
+[node name="MegaCrate3" parent="." unique_id=101588976 instance=ExtResource("4_p3c4k")]
+position = Vector2(4, 81)

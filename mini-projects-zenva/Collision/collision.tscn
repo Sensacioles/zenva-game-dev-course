@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://b86ooc8rq1pto"]
+
+[ext_resource type="PackedScene" uid="uid://p7arsiki8f5t" path="res://Collision/tree.tscn" id="1_fv6dv"]
+[ext_resource type="Script" uid="uid://dntvwma46woe2" path="res://Collision/player_movement.gd" id="2_15bix"]
+[ext_resource type="ArrayMesh" uid="uid://bil1ltfoqm4yc" path="res://Collision/character-female-b.obj" id="2_nc17b"]
+[ext_resource type="Material" uid="uid://c14asabk5e16i" path="res://Collision/ski.tres" id="3_nc17b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dn6e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15bix"]
+size = Vector3(1, 0.08111572, 1)
+
+[sub_resource type="Environment" id="Environment_ytqqh"]
+background_mode = 1
+background_color = Color(0.79069024, 0.59974253, 0.59046215, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fv6dv"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytqqh"]
+size = Vector3(0.7423248, 0.782568, 0.41351318)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fv6dv"]
+
+[node name="Main" type="Node3D" unique_id=1571114677]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1049009101]
+
+[node name="GroundModel" type="MeshInstance3D" parent="Ground" unique_id=1215572940]
+transform = Transform3D(12, 0, 0, 0, 0.28136668, 10.40807, 0, -0.1040807, 28.136667, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dn6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=109926984]
+transform = Transform3D(12, 0, 0, 0, 2.8136668, 10.40807, 0, -1.040807, 28.136667, 0, 0.0671227, 0.018708348)
+shape = SubResource("BoxShape3D_15bix")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=688913873]
+environment = SubResource("Environment_ytqqh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1152611846]
+transform = Transform3D(1, 0, 0, 0, 0.09881613, 0.99510574, 0, -0.99510574, 0.09881613, 0, 9.3413925, -5.4586134)
+shadow_enabled = true
+
+[node name="Tree" parent="." unique_id=1388478612 instance=ExtResource("1_fv6dv")]
+
+[node name="Tree2" parent="." unique_id=217569414 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.181912, -0.13565814, -3.124876)
+
+[node name="Tree3" parent="." unique_id=1297433551 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26986885, -1.5899143, -6.9101553)
+
+[node name="Tree4" parent="." unique_id=2048283558 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5664263, -2.5897298, -8.777475)
+
+[node name="Tree5" parent="." unique_id=1935749015 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2369328, 4.333215, 8.934696)
+
+[node name="Tree6" parent="." unique_id=1052349724 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.869825, 1.7532582, 3.6708272)
+
+[node name="Tree7" parent="." unique_id=1615213993 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.190526, 2.4408636, 5.818438)
+
+[node name="Tree8" parent="." unique_id=1020678636 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9540892, 4.5915008, 12.679012)
+
+[node name="Tree9" parent="." unique_id=493956856 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18982124, 2.9793162, 8.331665)
+
+[node name="Tree10" parent="." unique_id=1359716496 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8137592, 2.7398, 4.855495)
+
+[node name="Tree11" parent="." unique_id=1509019781 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00197, 1.4229517, 0.82776165)
+
+[node name="Tree12" parent="." unique_id=531350090 instance=ExtResource("1_fv6dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2371087, -0.28749013, -3.3015804)
+
+[node name="Player" type="RigidBody3D" parent="." unique_id=440571751]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6.545692, 13.21191)
+physics_material_override = SubResource("PhysicsMaterial_fv6dv")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_15bix")
+
+[node name="PlayerModel" type="MeshInstance3D" parent="Player" unique_id=1039968778]
+mesh = ExtResource("2_nc17b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=204993728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34530878, 0)
+shape = SubResource("BoxShape3D_ytqqh")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=622961615]
+transform = Transform3D(-1, 4.264338e-08, 9.852856e-08, 8.528677e-08, 0.8729646, 0.4877835, -6.521121e-08, 0.4877835, -0.8729646, -1.13087935e-07, 1.9532504, -1.2935753)
+fov = 90.0
+
+[node name="Ski" type="MeshInstance3D" parent="Player" unique_id=2059799340]
+transform = Transform3D(0.084975004, 0, 0, 0, 0.033594653, 0, -8.881784e-16, 0, 0.6092914, 0.08512313, -0.026651382, 0.059386253)
+material_override = ExtResource("3_nc17b")
+mesh = SubResource("BoxMesh_fv6dv")
+
+[node name="Ski2" type="MeshInstance3D" parent="Player" unique_id=1244118133]
+transform = Transform3D(0.084975004, 0, 0, 0, 0.033594653, 0, -8.881784e-16, 0, 0.6092914, -0.08419769, -0.026651382, 0.059386253)
+material_override = ExtResource("3_nc17b")
+mesh = SubResource("BoxMesh_fv6dv")
+
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]

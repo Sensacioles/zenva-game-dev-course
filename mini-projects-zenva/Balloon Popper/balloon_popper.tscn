@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c6seskspdu8wh"]
+
+[ext_resource type="Script" uid="uid://cf32b2ff4632w" path="res://Balloon Popper/balloon_manager.gd" id="1_hm4d0"]
+[ext_resource type="PackedScene" uid="uid://dn1pfsroytb7o" path="res://Balloon Popper/balloon.tscn" id="2_bxkad"]
+
+[sub_resource type="Environment" id="Environment_bxkad"]
+background_mode = 1
+background_color = Color(0.40180945, 0.8020473, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxkad"]
+font_size = 28
+outline_size = 6
+outline_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="Main" type="Node3D" unique_id=341656176]
+script = ExtResource("1_hm4d0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1298660050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2091855)
+fov = 85.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=696134533]
+transform = Transform3D(0.49700487, 0.5965191, -0.6301993, -0.1422698, 0.7724355, 0.61895293, 0.85600555, -0.21796429, 0.46877086, -1.5734332, 0.76523995, 0.1310718)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=495152044]
+environment = SubResource("Environment_bxkad")
+
+[node name="Balloon" parent="." unique_id=600051312 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2684263, -2.6402304)
+
+[node name="Balloon2" parent="." unique_id=369027012 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7790155, 0.48675656, -0.9728973)
+
+[node name="Balloon3" parent="." unique_id=372212095 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2820773, 0, -1.4390379)
+
+[node name="Balloon4" parent="." unique_id=1029737684 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3563187, 0.84945613, -2.8913212)
+
+[node name="Balloon5" parent="." unique_id=89644748 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94937575, -1.0020814, -1.7941267)
+
+[node name="Balloon6" parent="." unique_id=1952960815 instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8045454, -0.4042366, -1.6912413)
+
+[node name="ScoreText" type="Label" parent="." unique_id=1406877338]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_bxkad")
+horizontal_alignment = 1
