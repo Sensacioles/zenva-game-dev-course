@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://c1o05kil7uvc6"]
+
+[ext_resource type="Texture2D" uid="uid://djiwgxwnhli5i" path="res://Sprites/Characters/character_0006.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://cmhhu3k2iqcgm" path="res://Sprites/Characters/character_0007.png" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://badw70uw01s67" path="res://Scripts/camera_shake.gd" id="2_fkybt"]
+[ext_resource type="Texture2D" uid="uid://ckiimpeym2mic" path="res://Sprites/Objects/tile_0044.png" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cami6ra52gws7" path="res://Scripts/player_ui.gd" id="3_vgqql"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
+radius = 9.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v0iea")]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v0iea")]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cvnsp")]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "move"
+length = 0.43333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_cvnsp"), ExtResource("1_v0iea")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
+_data = {
+&"RESET": SubResource("Animation_6t5aa"),
+&"idle": SubResource("Animation_vgqql"),
+&"jump": SubResource("Animation_fkybt"),
+&"move": SubResource("Animation_x3wgy")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vgqql"]
+font_size = 38
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.7058824)
+
+[node name="Player" type="CharacterBody2D" unique_id=1596489184]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=49253044]
+texture = ExtResource("1_v0iea")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=411730347]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_cvnsp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1419012459]
+position = Vector2(41, -1)
+zoom = Vector2(2.5, 2.5)
+script = ExtResource("2_fkybt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1336865625]
+libraries/ = SubResource("AnimationLibrary_3smsa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1735961804]
+volume_db = -10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=615254134]
+script = ExtResource("3_vgqql")
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=365264475]
+offset_right = 40.0
+offset_bottom = 80.0
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthContainer" unique_id=1361846482]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HealthContainer" unique_id=517790990]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HealthContainer" unique_id=1784256098]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="ScoreText" type="Label" parent="CanvasLayer" unique_id=1698232361]
+offset_left = 9.0
+offset_top = 70.0
+offset_right = 196.0
+offset_bottom = 123.0
+text = "Score: 500"
+label_settings = SubResource("LabelSettings_vgqql")
