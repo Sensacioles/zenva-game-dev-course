@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://co3hpktwf7en0"]
+
+[ext_resource type="Texture2D" uid="uid://bnctwy36kbv5v" path="res://Sprites/Player.png" id="1_vhe61"]
+
+[resource]
+albedo_texture = ExtResource("1_vhe61")

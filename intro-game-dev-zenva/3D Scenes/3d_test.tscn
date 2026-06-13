@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://03mw5v485eqi"]
+
+[ext_resource type="PackedScene" uid="uid://dm77b0ncp46tv" path="res://3D Scenes/snowman.tscn" id="1_g22v7"]
+[ext_resource type="PackedScene" uid="uid://d2e0wujnn6k53" path="res://3D Scenes/materials.tscn" id="2_mac0m"]
+
+[node name="Node3D" type="Node3D" unique_id=751088654]
+
+[node name="Snowman" parent="." unique_id=587547063 instance=ExtResource("1_g22v7")]
+
+[node name="Material Spheres" parent="." unique_id=61128579 instance=ExtResource("2_mac0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7588929, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=97334595]
+transform = Transform3D(0.8409446, 0.2299281, -0.4898421, 0, 0.90523535, 0.42491052, 0.54112124, -0.3573262, 0.76125276, -0.7278298, 1.5285743, 1.738078)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=697490378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3597322, 0, 1.986126)

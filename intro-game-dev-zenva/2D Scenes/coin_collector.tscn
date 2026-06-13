@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dk10pdy6d0duw"]
+
+[ext_resource type="Texture2D" uid="uid://bnctwy36kbv5v" path="res://Sprites/Player.png" id="1_b08el"]
+[ext_resource type="Script" uid="uid://cqec8ycxk0en4" path="res://Scripts/player.gd" id="1_m1mdk"]
+[ext_resource type="PackedScene" uid="uid://drjtk4k5fhi60" path="res://2D Scenes/collectible_coin.tscn" id="3_1ccjv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ccjv"]
+size = Vector2(66, 92)
+
+[node name="Main" type="Node2D" unique_id=2110687934]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1563720340]
+position = Vector2(65, 86)
+script = ExtResource("1_m1mdk")
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=297310143]
+texture = ExtResource("1_b08el")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=664550556]
+shape = SubResource("RectangleShape2D_1ccjv")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1481191920]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
+
+[node name="Coin" parent="." unique_id=1005535385 instance=ExtResource("3_1ccjv")]
+position = Vector2(279, 96)
+
+[node name="Coin2" parent="." unique_id=794616566 instance=ExtResource("3_1ccjv")]
+position = Vector2(286, 186)
+
+[node name="Coin3" parent="." unique_id=2040494444 instance=ExtResource("3_1ccjv")]
+position = Vector2(495, 84)
+
+[node name="Coin4" parent="." unique_id=868794779 instance=ExtResource("3_1ccjv")]
+position = Vector2(459, 200)
+
+[node name="Coin5" parent="." unique_id=75896745 instance=ExtResource("3_1ccjv")]
+position = Vector2(395, 46)
+
+[node name="Coin6" parent="." unique_id=749502685 instance=ExtResource("3_1ccjv")]
+position = Vector2(362, 297)

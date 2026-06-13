@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dm77b0ncp46tv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4rgl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mklb1"]
+material = SubResource("StandardMaterial3D_x4rgl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_nxjs2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mklb1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_26ndh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxjs2"]
+albedo_color = Color(0.58328694, 0.3828861, 0.11400991, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shg61"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_26ndh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nc2e1"]
+albedo_color = Color(0.8361071, 0.38580143, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=587547063]
+
+[node name="lower" type="MeshInstance3D" parent="." unique_id=1227393552]
+mesh = SubResource("SphereMesh_mklb1")
+
+[node name="torso" type="MeshInstance3D" parent="." unique_id=1998661735]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.5983411, 0)
+mesh = SubResource("SphereMesh_mklb1")
+
+[node name="button1" type="MeshInstance3D" parent="torso" unique_id=2052904676]
+transform = Transform3D(0.10729235, 0, 0, 0, 0.09215459, 0.013778799, 0, -0.03642148, 0.034863483, 0.01220785, 0.26413944, 0.43237197)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="button2" type="MeshInstance3D" parent="torso" unique_id=2117549784]
+transform = Transform3D(0.10729233, 0, 0, 0, 0.09734853, 0.006998759, 0, -0.0184998, 0.03682845, 0.012207848, 0.15108405, 0.4864836)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="button3" type="MeshInstance3D" parent="torso" unique_id=199512269]
+transform = Transform3D(0.10729233, 0, 0, 0, 0.099090785, 0, 0, 0, 0.037487566, 0.012207848, 0.038074076, 0.5025042)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="r_arm" type="MeshInstance3D" parent="torso" unique_id=128144136]
+transform = Transform3D(0.78662884, 0, 0, 0, 0.12777853, 0, 0, 0, 0.12688705, -0.6921942, 0.1013391, 0.02585721)
+mesh = SubResource("BoxMesh_26ndh")
+surface_material_override/0 = SubResource("StandardMaterial3D_nxjs2")
+
+[node name="l_arm" type="MeshInstance3D" parent="torso" unique_id=634988456]
+transform = Transform3D(0.78662884, 0, 0, 0, 0.12777853, 0, 0, 0, 0.12688705, 0.81150025, 0.1013391, 0.02585721)
+mesh = SubResource("BoxMesh_26ndh")
+surface_material_override/0 = SubResource("StandardMaterial3D_nxjs2")
+
+[node name="head" type="MeshInstance3D" parent="." unique_id=1353140387]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.1025178, 0)
+mesh = SubResource("SphereMesh_mklb1")
+
+[node name="hat" type="MeshInstance3D" parent="head" unique_id=438829732]
+transform = Transform3D(1.3889921, 0, 0, 0, -6.7693264e-08, -0.15229617, 0, 1.5486412, -6.657077e-09, 0.010375302, 0.26967025, 0.03662789)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="hat2" type="MeshInstance3D" parent="head" unique_id=1014033799]
+transform = Transform3D(-1, 0, 1.5703563e-07, 0, 0.395, 0, -1.509958e-07, 0, -1.04, 0.010375302, 0.64257693, 0.03662789)
+mesh = SubResource("CylinderMesh_shg61")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="nose" type="MeshInstance3D" parent="head" unique_id=985931759]
+transform = Transform3D(0.15020928, 0, 0, 0, 0.039519966, 0, 0, 0, 0.6464817, 0.01709099, -0.12927371, 0.5520615)
+mesh = SubResource("CapsuleMesh_26ndh")
+surface_material_override/0 = SubResource("StandardMaterial3D_nc2e1")
+
+[node name="eye" type="MeshInstance3D" parent="head" unique_id=473447977]
+transform = Transform3D(0.10729235, 0, 0, 0, 0.09909083, 0, 0, 0, 0.037487566, -0.19935268, 0.057436407, 0.4939958)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")
+
+[node name="eye2" type="MeshInstance3D" parent="head" unique_id=1148878716]
+transform = Transform3D(0.10729235, 0, 0, 0, 0.09909083, 0, 0, 0, 0.037487566, 0.22045165, 0.057436407, 0.4939958)
+mesh = SubResource("SphereMesh_nxjs2")
+surface_material_override/0 = SubResource("StandardMaterial3D_mklb1")

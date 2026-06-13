@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d2e0wujnn6k53"]
+
+[ext_resource type="Material" uid="uid://cmlcslcknemu2" path="res://Materials/std_purple.tres" id="1_1juox"]
+[ext_resource type="Material" uid="uid://bh2ghxdd1a647" path="res://Materials/metal_green.tres" id="2_c31q8"]
+[ext_resource type="Material" uid="uid://cm2lskqxop2jq" path="res://Materials/transp_red.tres" id="3_lfnph"]
+[ext_resource type="Material" uid="uid://co3hpktwf7en0" path="res://Materials/texture.tres" id="4_5kd1w"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mohks"]
+
+[node name="Materials" type="MeshInstance3D" unique_id=61128579]
+
+[node name="standard purple" type="MeshInstance3D" parent="." unique_id=222655836]
+material_override = ExtResource("1_1juox")
+mesh = SubResource("SphereMesh_mohks")
+
+[node name="metallic green" type="MeshInstance3D" parent="." unique_id=432640765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2105234, 0, 0)
+material_override = ExtResource("2_c31q8")
+mesh = SubResource("SphereMesh_mohks")
+
+[node name="transparent red" type="MeshInstance3D" parent="." unique_id=784593153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34652, 0, 0)
+material_override = ExtResource("3_lfnph")
+mesh = SubResource("SphereMesh_mohks")
+
+[node name="texture" type="MeshInstance3D" parent="." unique_id=2122400893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6062963, 0, 0)
+material_override = ExtResource("4_5kd1w")
+mesh = SubResource("SphereMesh_mohks")

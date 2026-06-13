@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bfgiodxgdu85n"]
+
+[ext_resource type="Texture2D" uid="uid://bnctwy36kbv5v" path="res://Sprites/Player.png" id="1_halqa"]
+[ext_resource type="Script" uid="uid://1hyknjpqx0ln" path="res://2D Scenes/mover.gd" id="2_cuj78"]
+[ext_resource type="PackedScene" uid="uid://cwrpt07sdkidt" path="res://2D Scenes/coin.tscn" id="2_ngjij"]
+
+[node name="Main" type="Node2D" unique_id=1349676352]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1230711408]
+position = Vector2(192, 141)
+texture = ExtResource("1_halqa")
+script = ExtResource("2_cuj78")
+
+[node name="Coin" parent="." unique_id=1758707167 instance=ExtResource("2_ngjij")]
+position = Vector2(338, 153)
+
+[node name="Coin2" parent="." unique_id=1027225622 instance=ExtResource("2_ngjij")]
+position = Vector2(412, 153)
+
+[node name="Coin3" parent="." unique_id=1601828178 instance=ExtResource("2_ngjij")]
+position = Vector2(482, 153)
+
+[node name="Coin4" parent="." unique_id=544058584 instance=ExtResource("2_ngjij")]
+position = Vector2(544, 155)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=416572316]
+position = Vector2(251, 149)
