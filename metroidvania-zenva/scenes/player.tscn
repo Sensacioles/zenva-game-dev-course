@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://diafhvjofyvn"]
+
+[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://b6s3f6qjyst7a" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://baeto3t6mfvpo" path="res://scenes/ui/ui.tscn" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bvdid1lk2enp8" path="res://scripts/crosshair.gd" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cya8nsfxd5dut" path="res://graphics/fire/shotgun_explosion.png" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="8_smehm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "run"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.33333334, 0.53333336, 0.73333335, 0.93333334, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31, 32]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
+_data = {
+&"RESET": SubResource("Animation_g2els"),
+&"idle": SubResource("Animation_dqkch"),
+&"jump": SubResource("Animation_qlg0r"),
+&"run": SubResource("Animation_qhqgy")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_smehm"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tuyoq"]
+particle_flag_disable_z = true
+initial_velocity_min = 200.0
+initial_velocity_max = 280.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.29999998
+anim_speed_max = 2.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1685436062]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_g2els")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=558089210]
+
+[node name="TorsoSprite" type="Sprite2D" parent="Sprites" unique_id=495482320]
+position = Vector2(0, -8)
+texture = ExtResource("1_3vyb7")
+hframes = 8
+vframes = 5
+
+[node name="LegSprite" type="Sprite2D" parent="Sprites" unique_id=1966658102]
+position = Vector2(0, -7)
+texture = ExtResource("1_3vyb7")
+hframes = 8
+vframes = 5
+frame = 24
+
+[node name="Crosshair" type="Sprite2D" parent="Sprites" unique_id=1596828678]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_tuyoq")
+script = ExtResource("4_fjrip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970387110]
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=349824369]
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1688839146]
+libraries/ = SubResource("AnimationLibrary_dqkch")
+
+[node name="Timer" type="Node" parent="." unique_id=1424541170]
+
+[node name="ReloadTimer" type="Timer" parent="Timer" unique_id=1765705359]
+wait_time = 0.5
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="Timer" unique_id=393577587]
+wait_time = 2.0
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=2140039372]
+wait_time = 0.3
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1588904497]
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.5
+
+[node name="UI" parent="." unique_id=2121978243 instance=ExtResource("4_dqkch")]
+
+[node name="ShotgunParticles" type="GPUParticles2D" parent="." unique_id=1871716315]
+material = SubResource("CanvasItemMaterial_smehm")
+emitting = false
+amount = 20
+texture = ExtResource("7_fjrip")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_tuyoq")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=819158581]
+stream = ExtResource("8_smehm")
+volume_db = -50.0

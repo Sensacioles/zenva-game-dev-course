@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://wio5cnv8m2si"]
+
+[ext_resource type="Script" uid="uid://b6hu8rrtqigbs" path="res://scripts/soldier.gd" id="1_53ncc"]
+[ext_resource type="Texture2D" uid="uid://cqkfptu3l3gw1" path="res://graphics/characters/ARMob.png" id="1_q648l"]
+[ext_resource type="Shader" uid="uid://einvo6vn7wcj" path="res://shaders/flash.tres" id="2_ixdpc"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="4_0hlyi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0hlyi"]
+shader = ExtResource("2_ixdpc")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53ncc"]
+radius = 12.0
+height = 34.0
+
+[sub_resource type="Animation" id="Animation_q648l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_53ncc"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [19, 20, 21, 22]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stay_dead"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ixdpc"]
+resource_name = "run"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_0hlyi"]
+resource_name = "shoot_h"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_8tti8"]
+resource_name = "shoot_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_op21a"]
+_data = {
+&"RESET": SubResource("Animation_q648l"),
+&"death": SubResource("Animation_53ncc"),
+&"run": SubResource("Animation_ixdpc"),
+&"shoot_h": SubResource("Animation_0hlyi"),
+&"shoot_up": SubResource("Animation_8tti8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ncc"]
+size = Vector2(7, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53ncc"]
+radius = 71.00704
+
+[node name="Soldier" type="CharacterBody2D" unique_id=1791427322]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_53ncc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=15720362]
+material = SubResource("ShaderMaterial_0hlyi")
+texture = ExtResource("1_q648l")
+hframes = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=928582134]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_53ncc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=697590688]
+libraries/ = SubResource("AnimationLibrary_op21a")
+
+[node name="FloorLeftArea" type="Area2D" parent="." unique_id=1334650533]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLeftArea" unique_id=30052965]
+position = Vector2(-12, 23)
+shape = SubResource("RectangleShape2D_53ncc")
+
+[node name="FloorRightArea" type="Area2D" parent="." unique_id=822239660]
+collision_layer = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorRightArea" unique_id=571025475]
+position = Vector2(12, 23)
+shape = SubResource("RectangleShape2D_53ncc")
+
+[node name="PlayerArea" type="Area2D" parent="." unique_id=1199243812]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=2031314407]
+shape = SubResource("CircleShape2D_53ncc")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=669137341]
+wait_time = 2.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1235117215]
+stream = ExtResource("4_0hlyi")
+volume_db = -50.0
+
+[connection signal="body_exited" from="FloorLeftArea" to="." method="_on_floor_left_area_body_exited"]
+[connection signal="body_exited" from="FloorRightArea" to="." method="_on_floor_right_area_body_exited"]
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
+[connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

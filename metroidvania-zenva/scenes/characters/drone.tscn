@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cxnytgfn5u2on"]
+
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_rpnsq"]
+[ext_resource type="Script" uid="uid://donmetefxea6r" path="res://scripts/drone.gd" id="1_rxpq6"]
+[ext_resource type="Shader" uid="uid://einvo6vn7wcj" path="res://shaders/flash.tres" id="2_k0cur"]
+[ext_resource type="Texture2D" uid="uid://cbn5tc4c0ckcp" path="res://graphics/lights/l2.png" id="4_waagf"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="5_amngf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waagf"]
+resource_local_to_scene = true
+shader = ExtResource("2_k0cur")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpq6"]
+atlas = ExtResource("1_rpnsq")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0cur"]
+atlas = ExtResource("1_rpnsq")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waagf"]
+atlas = ExtResource("1_rpnsq")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amngf"]
+atlas = ExtResource("1_rpnsq")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4in0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxpq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0cur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waagf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amngf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e7lx"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fp51q"]
+radius = 78.10249
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0cur"]
+radius = 12.0415945
+
+[node name="Drone" type="CharacterBody2D" unique_id=2006818310 groups=["Drones", "Enemies"]]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_rxpq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1317021776]
+material = SubResource("ShaderMaterial_waagf")
+sprite_frames = SubResource("SpriteFrames_4in0l")
+autoplay = "default"
+frame_progress = 0.6257399
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1912426590]
+shape = SubResource("CircleShape2D_3e7lx")
+
+[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=1162588979]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=1275021903]
+shape = SubResource("CircleShape2D_fp51q")
+debug_color = Color(0.83192223, 0.36399958, 0.39366117, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=310971180]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1822507163]
+shape = SubResource("CircleShape2D_k0cur")
+debug_color = Color(0, 0.6434122, 0.30612442, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1017586981]
+color = Color(0.70747966, 0.07354849, 0, 1)
+energy = 0.75
+texture = ExtResource("4_waagf")
+texture_scale = 4.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=447153286]
+stream = ExtResource("5_amngf")
+volume_db = -50.0
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
