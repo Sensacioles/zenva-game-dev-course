@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dohcpinxvsx5y"]
+
+[ext_resource type="PackedScene" uid="uid://cm0dh121hixsp" path="res://scenes/towers/tower.tscn" id="1_sc5qg"]
+[ext_resource type="Script" uid="uid://bx7oie043byvx" path="res://scenes/towers/tower_blaster.gd" id="2_n8gjn"]
+[ext_resource type="Texture2D" uid="uid://dci820ay134in" path="res://graphics/ui/tower thumbnails/blaster.png" id="2_ujad2"]
+[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_6lo63"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8gjn"]
+radius = 30.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_itnc1"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5o44"]
+particle_flag_disable_z = true
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lo63"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itnc1"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8p0d"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[node name="TowerBlaster" unique_id=1719721052 instance=ExtResource("1_sc5qg")]
+script = ExtResource("2_n8gjn")
+
+[node name="Base" parent="." index="0" unique_id=256547552]
+texture = ExtResource("2_ujad2")
+
+[node name="Turret" parent="." index="1" unique_id=407846976]
+visible = false
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(845590195) index="0" unique_id=1813151744]
+shape = SubResource("CircleShape2D_n8gjn")
+
+[node name="Particles" type="Node2D" parent="." index="3" unique_id=1579245615]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=947919365]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(13, 0)
+emitting = false
+texture = ExtResource("4_6lo63")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_c5o44")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=141175247]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(-13, 0)
+emitting = false
+texture = ExtResource("4_6lo63")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_6lo63")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=291864724]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(0, -13)
+emitting = false
+texture = ExtResource("4_6lo63")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_itnc1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=2056025859]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(0, 13)
+emitting = false
+texture = ExtResource("4_6lo63")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_t8p0d")
+
+[node name="TowerMenu" parent="." index="6" unique_id=1519754421]
+visible = false
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -27,6 +27,7 @@ func _on_area_entered(bullet: Area2D) -> void:
 	hit()
 
 func hit():
+	$AudioStreamPlayer2D.play()
 	health -= 1
 	flash()
 	if health <= 0:

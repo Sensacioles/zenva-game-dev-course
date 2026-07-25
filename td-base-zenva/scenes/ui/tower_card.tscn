@@ -71,12 +71,12 @@ texture = ExtResource("2_yp74u")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="Panel/VBoxContainer" unique_id=1023394728]
+[node name="Control" type="Control" parent="Panel/VBoxContainer" unique_id=1023394728]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Control2" unique_id=1443616706]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Control" unique_id=1443616706]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,14 +85,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/Control2/VBoxContainer" unique_id=844967934]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Control/VBoxContainer" unique_id=844967934]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yp74u")
 theme_override_font_sizes/font_size = 22
 text = "Tower name"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer/Control2/VBoxContainer" unique_id=371356114]
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Control/VBoxContainer" unique_id=371356114]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yp74u")
 theme_override_font_sizes/font_size = 22

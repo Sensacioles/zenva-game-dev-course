@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cm0dh121hixsp"]
 
 [ext_resource type="Script" uid="uid://bkyoolnjian3" path="res://scenes/towers/tower.gd" id="1_by3tn"]
+[ext_resource type="PackedScene" uid="uid://c4mtqblag5xyw" path="res://scenes/ui/tower_menu.tscn" id="2_g767u"]
+[ext_resource type="AudioStream" uid="uid://c4eps6y231ocw" path="res://audio/explosion.wav" id="3_vfpy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjuqu"]
 
 [node name="Tower" type="Node2D" unique_id=1719721052]
 script = ExtResource("1_by3tn")
@@ -14,5 +18,27 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1813151744]
 
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1513234370]
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=1878578794]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1101640171]
+shape = SubResource("RectangleShape2D_pjuqu")
+
+[node name="TowerMenu" parent="." unique_id=1519754421 instance=ExtResource("2_g767u")]
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1032514757]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=859793849]
+stream = ExtResource("3_vfpy0")
+
 [connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
 [connection signal="area_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_exited"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
+[connection signal="upgrade_press" from="TowerMenu" to="." method="_on_tower_menu_upgrade_press"]
