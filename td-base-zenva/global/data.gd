@@ -25,7 +25,7 @@ const TOWER_DATA = {
 		'name': 'Mortar',
 		'cost': 30,
 		'upgrade_cost': 60,
-		'reload_time': 2.0,
+		'reload_time': 3.0,
 		'bullet': Bullet.MORTAR_EXPLOSION,
 		'thumbnail': "res://graphics/ui/tower thumbnails/mortar.png",
 		'scene': "res://scenes/towers/mortar_tower.tscn"}}
@@ -52,6 +52,9 @@ var health:=100:
 	set(value):
 		health = value
 		get_tree().get_first_node_in_group('UI').update_stats(money,health)
+		if health <= 0:
+			get_tree().quit()
+
 var money:=50:
 	set(value):
 		money = value
