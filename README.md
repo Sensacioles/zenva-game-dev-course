@@ -12,8 +12,8 @@ The bundle consists in 30 different courses, which are listed below:
 5. Metroidvania Unit 1 - Platformer Basics ✅
 6. Metroidvania Unit 2 - Combat and Levels ✅
 7. Tower Defense Game Unit 1 - Base Game ✅
-8. Tower Defense Game Unit 2 - Enhanced Towers
-9. Explore Micro-Survival Games 
+8. Tower Defense Game Unit 2 - Enhanced Towers ✅
+9. Explore Micro-Survival Games ⏳
 10. Make an AI State Machine
 11. Craft an Inventory System
 12. Construct a Crafting System
