@@ -1,5 +1,6 @@
 # Godot Game Dev Hosted by Zenva - 2026
-Repository for storing projects created in Zenva's Godot game development bundle of courses, based on the 2026 version provided by Humble Bundle, started in March 2nd, 2026. Godot's 4.6 version is being used throughout the lessons.
+Repository for storing projects created in Zenva's Godot game development bundle of courses, based on the 2026 version provided by Humble Bundle, started in March 2nd, 2026. 
+The first project used Godot's 4.6 version, the following projects are being developed using the newest version at the start of each one.
 
 The bundle consists in 30 different courses, which are listed below:
 
