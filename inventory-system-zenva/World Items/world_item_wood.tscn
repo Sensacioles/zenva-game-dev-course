@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bb7w7ueguhqmj"]
+
+[ext_resource type="Script" uid="uid://b4euqhj4my316" path="res://WorldItem.gd" id="1_7270s"]
+[ext_resource type="ArrayMesh" uid="uid://c2r7rahr0a8em" path="res://Items/Models/Wood.obj" id="1_coj63"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjuqu"]
+albedo_color = Color(0.28235295, 0.1882353, 0, 1)
+metallic = 0.47
+metallic_specular = 0.19
+emission_energy_multiplier = 8.75
+refraction_scale = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_346uq"]
+albedo_color = Color(1, 0.72491026, 0.5128776, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7270s"]
+points = PackedVector3Array(0.009980072, 0.16398616, 0.051917575, 0.0011714017, -0.15475617, 0.114247784, 0.009840852, -0.15287636, 0.11289049, -0.0974791, -0.12976444, -0.27944735, 0.1246121, -0.012665305, -0.2744181, -0.15193173, 0.0770732, -0.28960338, -0.13355497, -0.057981487, 0.28668815, 0.14724582, -0.03149097, 0.2905284, -0.076985866, 0.11761664, 0.2676047, 0.055466533, 0.13121416, -0.28971264, 0.13377215, 0.0668045, 0.27296236, 0.05453777, -0.12836643, -0.27655777, 0.08072728, -0.13651304, 0.28186625, -0.16682144, -0.021555513, -0.27506557, -0.077040955, -0.13383645, 0.2765124, 0.12403995, 0.10148791, -0.080043264, -0.098093756, 0.13152221, -0.29041675, -0.13863556, 0.022375105, 0.26957497, 0.13300169, -0.06541213, -0.080140226, 0.038079947, 0.12396507, 0.2919163, 0.07210969, 0.15565677, -0.080817565, 0.15128155, 0.013734693, 0.016594943, -0.15161814, -0.07603559, -0.2799573, 0.12058458, 0.014064024, -0.29415575, -0.01654008, 0.16493282, -0.16100977, -0.007675446, -0.14587131, -0.27603155, -0.016527038, -0.15484184, 0.28292927, 0.08015307, 0.11913489, 0.2800286, -0.119799495, 0.07394256, 0.2663358, -0.09412133, 0.13461432, -0.14798847, 0.1333878, -0.083222896, 0.28105426, -0.16335009, 0.014062506, -0.29410708)
+
+[node name="WorldItem_Wood" type="RigidBody3D" unique_id=35547975]
+script = ExtResource("1_7270s")
+item_name = "Wood"
+interact_prompt = "Pick up \"Wood\""
+
+[node name="Wood" type="MeshInstance3D" parent="." unique_id=1101885056]
+mesh = ExtResource("1_coj63")
+surface_material_override/0 = SubResource("StandardMaterial3D_pjuqu")
+surface_material_override/1 = SubResource("StandardMaterial3D_346uq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1734935522]
+shape = SubResource("ConvexPolygonShape3D_7270s")

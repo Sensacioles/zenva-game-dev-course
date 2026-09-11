@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://f5slaftm3ext"]
+
+[ext_resource type="Script" uid="uid://cmlwuwtlrtwbe" path="res://Items/Item.gd" id="1_emdew"]
+[ext_resource type="Texture2D" uid="uid://dkvupub4psbja" path="res://Items/Icons/Goo.png" id="1_lk8jg"]
+[ext_resource type="PackedScene" uid="uid://djrfh88iw3ena" path="res://World Items/world_item_goo.tscn" id="3_e54ne"]
+
+[resource]
+script = ExtResource("1_emdew")
+display_name = "Goo"
+icon = ExtResource("1_lk8jg")
+world_item_scene = ExtResource("3_e54ne")
+metadata/_custom_type_script = "uid://cmlwuwtlrtwbe"

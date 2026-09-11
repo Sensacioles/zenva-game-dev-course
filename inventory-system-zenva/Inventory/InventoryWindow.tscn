@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dxar58qiolvp2"]
+
+[ext_resource type="PackedScene" uid="uid://l38oaqjap2ub" path="res://Inventory/InventorySlot.tscn" id="1_l2ptj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_346uq"]
+font_size = 18
+
+[node name="InventoryWindow" type="Panel" unique_id=300694565]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -184.0
+offset_right = 280.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotContainer" type="GridContainer" parent="." unique_id=668560660]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -176.0
+offset_right = 270.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.95)
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="InventorySlot" parent="SlotContainer" unique_id=419592204 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="SlotContainer" unique_id=1538433965 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="SlotContainer" unique_id=1061050770 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="SlotContainer" unique_id=990576117 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="SlotContainer" unique_id=1881828905 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="SlotContainer" unique_id=1235715931 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="SlotContainer" unique_id=1116255742 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="SlotContainer" unique_id=1958177638 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="SlotContainer" unique_id=355155030 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="SlotContainer" unique_id=496022870 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="SlotContainer" unique_id=130556616 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="SlotContainer" unique_id=1338836413 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="SlotContainer" unique_id=1211677588 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="SlotContainer" unique_id=1405367644 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="SlotContainer" unique_id=959896594 instance=ExtResource("1_l2ptj")]
+layout_mode = 2
+
+[node name="InfoText" type="Label" parent="." unique_id=681019990]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -33.0
+offset_right = 250.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_346uq")
+horizontal_alignment = 1
+vertical_alignment = 1

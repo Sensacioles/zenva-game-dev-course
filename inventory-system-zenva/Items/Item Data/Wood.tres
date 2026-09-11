@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://c34gc5sdruu8c"]
+
+[ext_resource type="Texture2D" uid="uid://ccjtljhtdisln" path="res://Items/Icons/Wood.png" id="1_6jlb6"]
+[ext_resource type="Script" uid="uid://cmlwuwtlrtwbe" path="res://Items/Item.gd" id="1_kjntf"]
+[ext_resource type="PackedScene" uid="uid://bb7w7ueguhqmj" path="res://World Items/world_item_wood.tscn" id="3_uxgfd"]
+
+[resource]
+script = ExtResource("1_kjntf")
+display_name = "Wood"
+icon = ExtResource("1_6jlb6")
+world_item_scene = ExtResource("3_uxgfd")
+metadata/_custom_type_script = "uid://cmlwuwtlrtwbe"

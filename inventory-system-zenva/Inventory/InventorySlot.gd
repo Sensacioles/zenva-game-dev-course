@@ -1,0 +1,78 @@
+class_name InventorySlot
+extends Node
+
+@onready var icon:TextureRect = get_node("Icon")
+@onready var quantity_text:Label = get_node("QuantityText")
+
+var item:Item
+var quantity:int
+var inventory:Inventory
+
+# Set item to the slot it will be held
+func set_item(new_item:Item):
+	item = new_item
+	quantity = 1
+	
+	if item == null:
+		icon.visible = false
+	else:
+		icon.visible = true
+		icon.texture = item.icon
+	
+	update_quantity_text()
+
+# Increment item quantity
+func add_item():
+	quantity += 1
+	update_quantity_text()
+
+# Decrease item quantity
+func remove_item():
+	quantity -= 1 
+	update_quantity_text()
+	
+	if quantity == 0:
+		set_item(null)
+
+# Update label
+func update_quantity_text():
+	if quantity <= 1:
+		quantity_text.text = ""
+	else:
+		quantity_text.text = str(quantity)
+
+# Show item name on mouse hover
+func _on_mouse_entered() -> void:
+	if item == null:
+		inventory.info_text.text = ""
+	else:
+		inventory.info_text.text = item.display_name
+
+# Show blank text
+func _on_mouse_exited() -> void:
+	inventory.info_text.text = ""
+
+# Use item on click and decrease its quantity
+func _on_pressed() -> void:
+	if item == null:
+		return
+	
+	var remove_after_use = item._on_use(inventory.get_parent())
+	if remove_after_use:
+		remove_item()
+
+# Drop item if button is inputted
+func drop_item():
+	if item == null:
+		return
+
+	var world_item = item.world_item_scene.instantiate()
+	add_child(world_item)
+	world_item.position = inventory.get_parent().position + Vector3(0, 1.5, 0)  - inventory.get_parent().basis.z
+	remove_item()
+
+# Set right mouse button to drop item
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			drop_item()

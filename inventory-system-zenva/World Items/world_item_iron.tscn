@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://md24vvyv7mcp"]
+
+[ext_resource type="Script" uid="uid://b4euqhj4my316" path="res://WorldItem.gd" id="1_0daj0"]
+[ext_resource type="ArrayMesh" uid="uid://8evg4gju7nl8" path="res://Items/Models/Iron.obj" id="1_0o67o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxm6"]
+albedo_color = Color(0.79199904, 0.79199916, 0.7919989, 1)
+metallic = 0.5
+metallic_specular = 1.0
+roughness = 0.55
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fos0i"]
+points = PackedVector3Array(-0.22161831, 0.24700637, -0.7174868, 0.4484863, -0.14614277, 0.71588135, 0.46612373, -0.24802317, 0.74391824, -0.4548717, -0.22868332, 0.78375727, 0.46612373, -0.24802317, -0.74391824, 0.21929292, 0.24845114, 0.7217519, -0.4670539, -0.2465206, -0.7394824, 0.25408676, 0.21119586, -0.78016007, -0.25703332, 0.21056913, 0.77780056, -0.4509194, -0.1780937, -0.7769193, 0.2540871, 0.21119614, 0.78016114, -0.4670539, -0.2465206, 0.7394824, 0.21929292, 0.24845114, -0.7217519, 0.44423407, -0.15276456, -0.7716309, -0.22161831, 0.24700637, 0.7174868, -0.27409586, 0.2052109, -0.7338967, -0.46176153, -0.17288913, 0.73106956, 0.45227942, -0.22921467, 0.78554726, 0.2619809, 0.221929, -0.7112671, 0.45227942, -0.22921467, -0.78554726, -0.2570334, 0.2105692, -0.7778008, -0.46176153, -0.17288913, -0.73106956, -0.27409586, 0.2052109, 0.7338967, 0.2619809, 0.221929, 0.7112671, -0.4548717, -0.22868332, -0.78375727, 0.4484863, -0.14614277, -0.71588135, -0.23154585, 0.23376742, 0.77414817, -0.23154585, 0.23376742, -0.77414817, 0.44424102, -0.15276699, 0.77164286, 0.22845462, 0.23430453, -0.7759576, 0.22845462, 0.23430453, 0.7759576, 0.42558327, -0.09999884, 0.71621007)
+
+[node name="WorldItem_Iron" type="RigidBody3D" unique_id=1482479660]
+script = ExtResource("1_0daj0")
+item_name = "Iron"
+interact_prompt = "Pick up \"Iron\""
+
+[node name="Iron" type="MeshInstance3D" parent="." unique_id=229977583]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = ExtResource("1_0o67o")
+surface_material_override/0 = SubResource("StandardMaterial3D_3dxm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1786435246]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fos0i")
