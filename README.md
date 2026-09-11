@@ -16,8 +16,8 @@ The bundle consists in 30 different courses, which are listed below:
 8. Tower Defense Game Unit 2 - Enhanced Towers ✅
 9. Explore Micro-Survival Games ✅
 10. Make an AI State Machine ✅
-11. Craft an Inventory System ⏳
-12. Construct a Crafting System
+11. Craft an Inventory System ✅
+12. Construct a Crafting System ⏳
 13. Intro to Mobile Game Development
 14. Swipe Detection Game
 15. 2D Action RPG Unit 1 - Players and Enemies
